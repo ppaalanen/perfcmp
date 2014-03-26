@@ -173,7 +173,7 @@ def compare(old_stats, old_data, new_stats, new_data):
             vprint("Calculate percentage difference...")
             pcnt_diff = 100.0 * mean_diff / old['mean']
         vprint("Calculate the t-test value...")
-        (t_value, conf) = stats.ttest_ind(old_data[idx], new_data[idx])
+        (t_value, conf) = stats.ttest_ind(old_data[idx], new_data[idx], equal_var = False)
         vprint("Calculate the confidence...")
         conf            = 100.0 * (1.0 - conf)
 
