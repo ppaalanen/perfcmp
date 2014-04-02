@@ -163,18 +163,13 @@ def compare(old_stats, old_data, new_stats, new_data):
 
     for old, new in zip(old_stats, new_stats):
         vprint("Computing test " + labels[idx] + "...")
-        vprint("Calculate mean difference...")
         if options.invert:
             mean_diff = old['mean'] - new['mean']
-            vprint("Calculate percentage difference...")
             pcnt_diff = 100.0 * mean_diff / new['mean']
         else:
             mean_diff = new['mean'] - old['mean']
-            vprint("Calculate percentage difference...")
             pcnt_diff = 100.0 * mean_diff / old['mean']
-        vprint("Calculate the t-test value...")
         (t_value, conf) = stats.ttest_ind(old_data[idx], new_data[idx], equal_var = False)
-        vprint("Calculate the confidence...")
         conf            = 100.0 * (1.0 - conf)
 
         data = {
